@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNetCore.Razor.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNetCore.Razor.ImmutableArrayExtensions">
+            <summary>
+            <see cref="T:System.Collections.Immutable.ImmutableArray`1"/> extension methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.ImmutableArrayExtensions.NullToEmpty``1(System.Collections.Immutable.ImmutableArray{``0})">
+            <summary>
+            Returns an empty array if the input array is null (default)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Razor.KeyValuePairExtensions.Deconstruct``2(System.Collections.Generic.KeyValuePair{``0,``1},``0@,``1@)">
+            <summary>
+            Deconstructs a <see cref="T:System.Collections.Generic.KeyValuePair`2"/> into out variables. Provides support
+            for assignment like
+            <code>
+            var (k,v) = kvp;
+            </code>
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.ArrayBuilderPool`1">
+            <summary>
+            A pool of <see cref="T:System.Collections.Immutable.ImmutableArray`1.Builder"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.DictionaryPool`2">
+            <summary>
+            A pool of <see cref="T:System.Collections.Generic.Dictionary`2"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.HashSetPool`1">
+            <summary>
+            A pool of <see cref="T:System.Collections.Generic.HashSet`1"/> instances that compares items using default equality.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.ListPool`1">
+            <summary>
+            A pool of <see cref="T:System.Collections.Generic.List`1"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.ReferenceEqualityHashSetPool`1">
+            <summary>
+            A pool of <see cref="T:System.Collections.Generic.HashSet`1"/> instances that compares items using reference equality.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.StackPool`1">
+            <summary>
+            A pool of <see cref="T:System.Collections.Generic.Stack`1"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.StopwatchPool">
+            <summary>
+            A pool of <see cref="T:System.Diagnostics.Stopwatch"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.StringBuilderPool">
+            <summary>
+            A pool of <see cref="T:System.Text.StringBuilder"/> instances.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Razor.PooledObjects.StringDictionaryPool`1">
+            <summary>
+            Pooled <see cref="T:System.Collections.Generic.Dictionary`2"/> instances when the key is of type <see cref="T:System.String"/>.
+            </summary>
+            
+            <remarks>
+            Instances originating from this pool are intended to be short-lived and are suitable
+            for temporary work. Do not return them as the results of methods or store them in fields.
+            </remarks>
+        </member>
+    </members>
+</doc>

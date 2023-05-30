@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Validation</id>
+    <version>17.0.53</version>
+    <authors>Microsoft</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/Microsoft/vs-validation</projectUrl>
+    <description>Common input validation and state verification utility methods.</description>
+    <releaseNotes>https://github.com/microsoft/vs-validation/releases/tag/v17.0.53</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>InputValidation IntegrityCheck</tags>
+    <repository type="git" url="https://github.com/microsoft/vs-validation" commit="a2fc6ac120ced2ac686f02084d5c51ff18b5313f" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

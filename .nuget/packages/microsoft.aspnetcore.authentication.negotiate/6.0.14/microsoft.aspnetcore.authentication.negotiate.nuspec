@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNetCore.Authentication.Negotiate</id>
+    <version>6.0.14</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>Icon.png</icon>
+    <projectUrl>https://asp.net/</projectUrl>
+    <description>ASP.NET Core authentication handler used to authenticate requests using Negotiate, Kerberos, or NTLM.
+
+This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/54e8b61777d42d2b10744d1987438ee5b8c0b24d</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>aspnetcore authentication security</tags>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/aspnetcore" commit="54e8b61777d42d2b10744d1987438ee5b8c0b24d" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.AspNetCore.Connections.Abstractions" version="6.0.14" exclude="Build,Analyzers" />
+        <dependency id="System.DirectoryServices.Protocols" version="6.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  <frameworkReferences><group targetFramework="net6.0"><frameworkReference name="Microsoft.AspNetCore.App" /></group></frameworkReferences></metadata>
+</package>

@@ -1,0 +1,372 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGet.LibraryModel</name>
+    </assembly>
+    <members>
+        <member name="P:NuGet.LibraryModel.CentralPackageVersionNameComparer.Default">
+            <summary>
+            Returns a singleton instance for the <see cref="T:NuGet.LibraryModel.CentralPackageVersionNameComparer" />.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.CentralPackageVersionNameComparer.#ctor">
+            <summary>
+            Get a singleton instance only through the <see cref="P:NuGet.LibraryModel.CentralPackageVersionNameComparer.Default" />.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.FrameworkDependencyFlagsUtils.GetFlags(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Convert set of flag strings into a FrameworkDependencyFlags.
+            </summary>
+            <param name="values">A list of values to generate the flags out of</param>
+        </member>
+        <member name="M:NuGet.LibraryModel.FrameworkDependencyFlagsUtils.GetFlagString(NuGet.LibraryModel.FrameworkDependencyFlags)">
+            <summary>
+            Convert framework dependency flags to a friendly string.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.FrameworkDependencyFlagsUtils.GetFlags(System.String)">
+            <summary>
+            Convert set of flag strings into a LibraryIncludeFlags.
+            If the <paramref name="flags" /> is null, it returns the default value of <see cref="F:NuGet.LibraryModel.FrameworkDependencyFlags.None" />
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependency.AutoReferenced">
+            <summary>
+            True if the PackageReference is added by the SDK and not the user.
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependency.VersionCentrallyManaged">
+            <summary>
+            True if the dependency has the version set through CentralPackagVersionManagement file.
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependency.ReferenceType">
+            <summary>
+            Information regarding if the dependency is direct or transitive.  
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependency.VersionOverride">
+            <summary>
+            Gets or sets a value indicating a version override for any centrally defined version.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryDependency.ApplyCentralVersionInformation(System.Collections.Generic.IList{NuGet.LibraryModel.LibraryDependency},System.Collections.Generic.IDictionary{System.String,NuGet.LibraryModel.CentralPackageVersion})">
+            <summary>
+            Merge the CentralVersion information to the package reference information.
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependencyInfo.Resolved">
+            <summary>
+            False if the package could not be found.
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependencyInfo.Library">
+            <summary>
+            Original library identity from the nuspec.
+            This contains the original casing for the id/version.
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependencyInfo.Dependencies">
+            <summary>
+            Dependencies
+            </summary>
+        </member>
+        <member name="P:NuGet.LibraryModel.LibraryDependencyInfo.Framework">
+            <summary>
+            Target framework used to select the dependencies.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryDependencyInfo.CreateUnresolved(NuGet.LibraryModel.LibraryIdentity,NuGet.Frameworks.NuGetFramework)">
+            <summary>
+            Unresolved
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryDependencyInfo.Create(NuGet.LibraryModel.LibraryIdentity,NuGet.Frameworks.NuGetFramework,System.Collections.Generic.IEnumerable{NuGet.LibraryModel.LibraryDependency})">
+            <summary>
+            Resolved
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryDependencyTarget.PackageProjectExternal">
+            <summary>
+            A package, project, or external project
+            </summary>
+        </member>
+        <member name="T:NuGet.LibraryModel.LibraryDependencyTargetUtils">
+            <summary>
+            Helper methods for dealing with LibraryDependencyTarget strings.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryDependencyTargetUtils.Parse(System.String)">
+            <summary>
+            Convert flag string into a LibraryTypeFlag.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryDependencyTargetUtils.GetFlagString(NuGet.LibraryModel.LibraryDependencyTarget)">
+            <summary>
+            Convert type flags to a friendly string.
+            </summary>
+        </member>
+        <member name="T:NuGet.LibraryModel.LibraryIncludeFlagUtils">
+            <summary>
+            Helper methods for dealing with include/exclude flag strings.
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryIncludeFlagUtils.DefaultSuppressParent">
+            <summary>
+            By default build, contentFiles, and analyzers do not flow transitively between projects.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryIncludeFlagUtils.GetFlags(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Convert set of flag strings into a LibraryIncludeFlags.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryIncludeFlagUtils.GetFlagString(NuGet.LibraryModel.LibraryIncludeFlags)">
+            <summary>
+            Convert library flags to a friendly string.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryIncludeFlagUtils.GetFlags(System.String,NuGet.LibraryModel.LibraryIncludeFlags)">
+            <summary>
+            Convert set of flag strings into a LibraryIncludeFlags.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryRange.TypeConstraintAllows(NuGet.LibraryModel.LibraryDependencyTarget)">
+            <summary>
+            True if the type constraint allows the flag.
+            </summary>
+        </member>
+        <member name="M:NuGet.LibraryModel.LibraryRange.TypeConstraintAllowsAnyOf(NuGet.LibraryModel.LibraryDependencyTarget)">
+            <summary>
+            True if any flags are allowed by the constraint.
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.Project">
+            <summary>
+            Indicates that the library comes from compiling an XRE-based Project
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.ExternalProject">
+            <summary>
+            Indicates that the library comes from compiling an external project (such as an MSBuild-based project)
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.Package">
+            <summary>
+            Indicates that the library comes from a NuGet Package
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.Assembly">
+            <summary>
+            Indicates that the library comes from a stand-alone .NET Assembly
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.Reference">
+            <summary>
+            Indicates that the library comes from a .NET Assembly in a globally-accessible
+            location such as the GAC or the Framework Reference Assemblies
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.WinMD">
+            <summary>
+            Indicates that the library comes from a Windows Metadata Assembly (.winmd file)
+            </summary>
+        </member>
+        <member name="F:NuGet.LibraryModel.LibraryType.Unresolved">
+            <summary>
+            Indicates that the library could not be resolved
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.OrderedEquals``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two enumerables for equality, ordered according to the specified key and optional comparer. Handles null values gracefully.
+            </summary>
+            <typeparam name="TSource">The type of the list</typeparam>
+            <typeparam name="TKey">The type of the sorting key</typeparam>
+            <param name="self">This list</param>
+            <param name="other">The other list</param>
+            <param name="keySelector">The function to extract the key from each item in the list</param>
+            <param name="orderComparer">An optional comparer for comparing keys</param>
+            <param name="sequenceComparer">An optional comparer for sequences</param>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.OrderedEquals``2(System.Collections.Generic.ICollection{``0},System.Collections.Generic.ICollection{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two collections for equality, ordered according to the specified key and optional comparer. Handles null values gracefully.
+            </summary>
+            <typeparam name="TSource">The type of the list</typeparam>
+            <typeparam name="TKey">The type of the sorting key</typeparam>
+            <param name="self">This list</param>
+            <param name="other">The other list</param>
+            <param name="keySelector">The function to extract the key from each item in the list</param>
+            <param name="orderComparer">An optional comparer for comparing keys</param>
+            <param name="sequenceComparer">An optional comparer for sequences</param>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.OrderedEquals``2(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two lists for equality, ordered according to the specified key and optional comparer. Handles null values gracefully.
+            </summary>
+            <typeparam name="TSource">The type of the list</typeparam>
+            <typeparam name="TKey">The type of the sorting key</typeparam>
+            <param name="self">This list</param>
+            <param name="other">The other list</param>
+            <param name="keySelector">The function to extract the key from each item in the list</param>
+            <param name="orderComparer">An optional comparer for comparing keys</param>
+            <param name="sequenceComparer">An optional comparer for sequences</param>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.SequenceEqualWithNullCheck``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two sequence for equality, allowing either sequence to be null. If one is null, both have to be
+            null for equality.
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.SequenceEqualWithNullCheck``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two collections for equality, allowing either collection to be null. If one is null, both have to be
+            null for equality.
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.SequenceEqualWithNullCheck``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two lists for equality, allowing either list to be null. If one is null, both have to be
+            null for equality.
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.SetEqualsWithNullCheck``1(System.Collections.Generic.ISet{``0},System.Collections.Generic.ISet{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Compares two sets for equality, allowing either sequence to be null.
+            If one is null, both have to be null for equality.
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.EqualityUtility.EqualsFalse(System.String)">
+            <summary>
+            Determines if the current string contains a value equal "false".  Leading and trailing whitespace are trimmed and the comparision is case-insensitive
+            </summary>
+            <param name="value">The string to compare.</param>
+            <returns><c>true</c> if the current string is equal to a value of "false", otherwise <c>false&gt;</c>.</returns>
+        </member>
+        <member name="T:NuGet.Shared.HashCodeCombiner">
+            <summary>
+            Hash code creator, based on the original NuGet hash code combiner/ASP hash code combiner implementations
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.HashCodeCombiner.GetHashCode``2(``0,``1)">
+            <summary>
+            Create a unique hash code for the given set of items
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.HashCodeCombiner.GetHashCode``3(``0,``1,``2)">
+            <summary>
+            Create a unique hash code for the given set of items
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.Extensions.AsList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Return the enumerable as a List of T, copying if required. Optimized for common case where it is an List of T.
+            Avoid mutating the return value.
+            </summary>
+            <remarks>https://aspnetwebstack.codeplex.com/SourceControl/latest#src/Common/CollectionExtensions.cs</remarks>
+        </member>
+        <member name="M:NuGet.Shared.Extensions.AsHashSet``1(System.Collections.Generic.ISet{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Return the ISet as a HashSet of T, copying if required. Optimized for common case where it is a HashSet of T.
+            Avoid mutating the return value.
+            </summary>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.Load(System.String)">
+            <summary>
+            Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file.
+            </summary>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>
+            <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
+            <summary>
+            Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file. Optionally, whitespace can be preserved.
+            </summary>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>
+            <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions" />.</param>
+            <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.Load(System.IO.Stream)">
+            <summary>
+            Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a stream.
+            </summary>
+            <param name="input">The stream that contains the XML data.</param>
+            <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified stream.</returns>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.Load(System.IO.Stream,System.Xml.Linq.LoadOptions)">
+            <summary>
+            Creates a new System.Xml.Linq.XDocument from a stream. Optionally, whitespace can be preserved.
+            </summary>
+            <param name="input">The stream that contains the XML data.</param>
+            <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions" />.</param>
+            <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified stream.</returns>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.GetEncodedXMLName(System.String)">
+            <summary>
+            Converts the name to a valid XML local name, if it is invalid.
+            </summary>
+            <param name="name">The name to be encoded.</param>
+            <returns>The encoded name.</returns>
+        </member>
+        <member name="M:NuGet.Shared.XmlUtility.GetXmlReaderSettings(System.Xml.Linq.LoadOptions)">
+            <summary>
+            Creates an instance of <see cref="T:System.Xml.XmlReaderSettings" /> with safe settings
+            <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions" />.</param>
+            </summary>
+        </member>
+        <member name="T:NuGet.StringBuilderPool">
+            <summary>
+            Provides a resource pool that enables reusing instances of <see cref="T:System.Text.StringBuilder" /> instances.
+            </summary>
+            <remarks>
+            <para>
+            Renting and returning buffers with an <see cref="T:NuGet.StringBuilderPool" /> can increase performance
+            in situations where <see cref="T:System.Text.StringBuilder" /> instances are created and destroyed frequently,
+            resulting in significant memory pressure on the garbage collector.
+            </para>
+            <para>
+            This class is thread-safe.  All members may be used by multiple threads concurrently.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:NuGet.StringBuilderPool.Shared">
+            <summary>
+            Retrieves a shared <see cref="T:NuGet.StringBuilderPool" /> instance.
+            </summary>
+        </member>
+        <member name="M:NuGet.StringBuilderPool.Rent(System.Int32)">
+            <summary>
+            Retrieves a <see cref="T:System.Text.StringBuilder" /> that is at least the requested length.
+            </summary>
+            <param name="minimumCapacity">The minimum capacity of the <see cref="T:System.Text.StringBuilder" /> needed.</param>
+            <returns>
+            A <see cref="T:System.Text.StringBuilder" /> that is at least <paramref name="minimumCapacity" /> in length.
+            </returns>
+            <remarks>
+            This buffer is loaned to the caller and should be returned to the same pool via
+            <see cref="M:NuGet.StringBuilderPool.Return(System.Text.StringBuilder)" /> so that it may be reused in subsequent usage of <see cref="M:NuGet.StringBuilderPool.Rent(System.Int32)" />.
+            It is not a fatal error to not return a rented string builder, but failure to do so may lead to
+            decreased application performance, as the pool may need to create a new instance to replace
+            the one lost.
+            </remarks>
+        </member>
+        <member name="M:NuGet.StringBuilderPool.Return(System.Text.StringBuilder)">
+            <summary>
+            Returns to the pool an array that was previously obtained via <see cref="M:NuGet.StringBuilderPool.Rent(System.Int32)" /> on the same
+            <see cref="T:NuGet.StringBuilderPool" /> instance.
+            </summary>
+            <param name="builder">
+            The <see cref="T:System.Text.StringBuilder" /> previously obtained from <see cref="M:NuGet.StringBuilderPool.Rent(System.Int32)" /> to return to the pool.
+            </param>
+            <remarks>
+            Once a <see cref="T:System.Text.StringBuilder" /> has been returned to the pool, the caller gives up all ownership
+            of the instance and must not use it. The reference returned from a given call to <see cref="M:NuGet.StringBuilderPool.Rent(System.Int32)" />
+            must only be returned via <see cref="M:NuGet.StringBuilderPool.Return(System.Text.StringBuilder)" /> once.  The default <see cref="T:NuGet.StringBuilderPool" />
+            may hold onto the returned instance in order to rent it again, or it may release the returned instance
+            if it's determined that the pool already has enough instances stored.
+            </remarks>
+        </member>
+    </members>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>PoXe4frYZHZgSPpPQjSf5WREwq0RoO4hXY9DhEe+pNc=</DigestValue></Reference></SignedInfo><SignatureValue>h7hquJBcF3juko0V1l+sMw7Z96/mGL+PfDd3yOygrF57vnkpUI7YIVS4ZmTtSCey8XN+B0G5Wa8kDQvWES9oUWnH7KqdxFXg3PUAwishc3f23m8H4UrUHSjvbQG3Fn/SDCEAzPzi/o76uGndOAaxojQ426FesDdM5t6meRo+gVwB/szx5NRFW7If2oAAfgiykSV8A2qi9tVb/LJ/o6cCZgm7iZ4o1PWj61bRNdAYCk4Pn6QY3atmRSPderfMi2tOX0+etXL/bC9vYRpDr/9xcMijZMTsj+MRMkKuwt2eVSHA+AXQ5t0dvG+D3Hr3Wq86uEmZHV7gjMiYF6DkRQY0gQ==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>ok2x7OvGwA7zbnfezc3HT9M4dJka+FaQ7+vCqG40Bcm1QLlYIiDX/Whts0LVijaOvtl9iMeuShnAV7mchItKAVAABpyHuTuav2NCI9FsA8jFmlWndk3uK9RInNx1h1H4ojYxdBExyoN6muwwslKsLEfauUml7h5WAsDPpufTZd4yp2Jyiy384Zdd8CJlfQxfDe+gDZEciugWKHPSOoRxdjAk0GFm0OH14MyoYM4+M3mm1oH7vmSQohS5KIL3NEVW9Mdw7csTG5f93uORLvrJ/8ehFcGyWVb7UGHJnRhdcgGIbfiZzZlsAMS/DIBzM8RHKGNUNSbbLYmN/rt7pRjL4Q==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIF/zCCA+egAwIBAgITMwAAAsyOtZamvdHJTgAAAAACzDANBgkqhkiG9w0BAQsFADB+MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSgwJgYDVQQDEx9NaWNyb3NvZnQgQ29kZSBTaWduaW5nIFBDQSAyMDExMB4XDTIyMDUxMjIwNDYwMVoXDTIzMDUxMTIwNDYwMVowdDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEeMBwGA1UEAxMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAok2x7OvGwA7zbnfezc3HT9M4dJka+FaQ7+vCqG40Bcm1QLlYIiDX/Whts0LVijaOvtl9iMeuShnAV7mchItKAVAABpyHuTuav2NCI9FsA8jFmlWndk3uK9RInNx1h1H4ojYxdBExyoN6muwwslKsLEfauUml7h5WAsDPpufTZd4yp2Jyiy384Zdd8CJlfQxfDe+gDZEciugWKHPSOoRxdjAk0GFm0OH14MyoYM4+M3mm1oH7vmSQohS5KIL3NEVW9Mdw7csTG5f93uORLvrJ/8ehFcGyWVb7UGHJnRhdcgGIbfiZzZlsAMS/DIBzM8RHKGNUNSbbLYmN/rt7pRjL4QIDAQABo4IBfjCCAXowHwYDVR0lBBgwFgYKKwYBBAGCN0wIAQYIKwYBBQUHAwMwHQYDVR0OBBYEFIi4R40ylsyKlSKfrDNqzhx9da30MFAGA1UdEQRJMEekRTBDMSkwJwYDVQQLEyBNaWNyb3NvZnQgT3BlcmF0aW9ucyBQdWVydG8gUmljbzEWMBQGA1UEBRMNMjMwMDEyKzQ3MDUyOTAfBgNVHSMEGDAWgBRIbmTlUAXTgqoXNzcitW2oynUClTBUBgNVHR8ETTBLMEmgR6BFhkNodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3JsMGEGCCsGAQUFBwEBBFUwUzBRBggrBgEFBQcwAoZFaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jZXJ0cy9NaWNDb2RTaWdQQ0EyMDExXzIwMTEtMDctMDguY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIBAHgPA7DgB0udzEyB2LvG216zuskLUQ+iX8jFnl2i7tzXPDw5xXNXn2KvxdzBsf2osDW3LCdjFOwSjVkz+SUFQQNhjSHkd5knF6pzrL9V6lz72XiEg1Vi2gUM3HiLXSMIKOgdd78ZZJEmDLwdA692MO/1vVOFpOSv0QzpyBr5iqiotwMMsZVdZqXn8u9vRSmlk+3nQXdyOPoZXTGPLHXwz41kbSc4zI12bONTlDsLR3HD2s44wuyp3c72R8f9FVi/J9DU/+NOL37Z1yonzGZEuKdrAd6CvupAnLMlrIEv93mBsNRXuDDp4p9UYYK1taxzzgyUxgFDpluMHN0Oiiq9s73u7DA2XvbX8paJz8IZPe9a1/KhsOi5Kxhb99SCXiUnv2lGxnVAz5G6wAW1bzxJYKI+Xj90RKseY3X5EMO7TnVpIZ9Iw1IdrkHp/QLY90ZCch7kdBlLCVTFhSXZCDv4BcM6DhpRzbJsb6QDVfOv9aoG9aGV3a1EacyaedzLA2gWP6cTnCdAr4OrlrN5EFoCpOWgc77F/eQc3SLR06VTLVT1uKuNVxL2xZlD9Z+qC+a3TXa0zI/x1zEZNSgpLGsdVcaN6r/td3ArGQGkDWiAL7eS75LIWZA2SD//9B56uzZ1nmEd8+KBYsPTdp922/W2kFrlj7MBtA6vWE/ZG/grOKiC</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">MIAGCSqGSIb3DQEHAqCAMIIW4QIBAzEPMA0GCWCGSAFlAwQCAQUAMIIBVQYLKoZIhvcNAQkQAQSgggFEBIIBQDCCATwCAQEGCisGAQQBhFkKAwEwMTANBglghkgBZQMEAgEFAAQgpAdDbdc/VxptXkx70dLDKiDrcWKzn13kLTu+JCX5hJkCBmMRSwx9WhgTMjAyMjA5MDkyMzE3NTUuMjU5WjAEgAIB9KCB1KSB0TCBzjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEpMCcGA1UECxMgTWljcm9zb2Z0IE9wZXJhdGlvbnMgUHVlcnRvIFJpY28xJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNOOjBBNTYtRTMyOS00RDREMSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBTZXJ2aWNloIIRXzCCBxAwggT4oAMCAQICEzMAAAGnNbsuwmSFUCkAAQAAAacwDQYJKoZIhvcNAQELBQAwfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwHhcNMjIwMzAyMTg1MTIyWhcNMjMwNTExMTg1MTIyWjCBzjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEpMCcGA1UECxMgTWljcm9zb2Z0IE9wZXJhdGlvbnMgUHVlcnRvIFJpY28xJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNOOjBBNTYtRTMyOS00RDREMSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBTZXJ2aWNlMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA7SM4xh1QBd5wJablXpNGhBniGw8t7RWnoLDEWJMDmXzrt8BsPLGcrN18Gx//RclVfMiRy/MIRJeiSW8wMENr3tIS/4K4sQiigxsUEfVZ5iCYtU71NtstK0mKU0hOZBBDgUHmrMwSwN+mZplkxZaB06OhJB531SuOOZy5axKySe2JpQP9VB1Bwsyel5QZzsJCwBij0dwgxvUfwNNxnvIB7do5h/vro/Y5Pnnf/iF2cn0pun8V8N5QBVi4RzXBmWZs91Fr+4LHiIpem3zT/nCgAZIOXy9I0XGLi6ZcoKTBYebwZ4Nne04rMwhwhj/rgW2l2qk3BuoZrcaQlOgQU9HoPpcnRbKp5tm85mMxAR4sIkitKcXgtuSR+RfgPixyMrP3aUj0tG6uEw9MERDqnDeIawQ9j4mtzH8MmbJBapuk3cWyRa73GGDNihixG6KwJvkUgxKGJqWXMTO6bnEsThTl+7ERvCTS5j1lUM1V8SGCJB51xIB3cZa9UzfqC1jLpAl+LEPuW3CNKbmxVrW+gF/ZZmAILevhETtWei+WpsJ3ecfJe/n7xQZMurupF1FBBoFBd6RP1SNS5tw1Lxlh5nArx3Z60P3yZIjgypdwzJJEpQn05lVA1bMjcvJLn4KMiywEd2/X1ozoKNdC5mSSaVk60yqQtGDW2aGAjrXIUL6PEHcCAwEAAaOCATYwggEyMB0GA1UdDgQWBBQfbLh/BZguMIVv4Q5CA/P0+lpFgzAfBgNVHSMEGDAWgBSfpxVdAF5iXYP05dJlpxtTNRnpcjBfBgNVHR8EWDBWMFSgUqBQhk5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNyb3NvZnQlMjBUaW1lLVN0YW1wJTIwUENBJTIwMjAxMCgxKS5jcmwwbAYIKwYBBQUHAQEEYDBeMFwGCCsGAQUFBzAChlBodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NlcnRzL01pY3Jvc29mdCUyMFRpbWUtU3RhbXAlMjBQQ0ElMjAyMDEwKDEpLmNydDAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUFBwMIMA0GCSqGSIb3DQEBCwUAA4ICAQBPEvox89k6FH3UMdKGXNqXsHy84JS/OW9tWFrRTOFl+8hxkD9tPddNdtA8ucgNaVF2NBfs8aQ5GFf+amNkILknt8PdMkyf1lBDwxecnSzHf9AkiU2A9Vo6mT1iTVgSrIi07I8evc6be/+r2Hl/moOTQgxXa1qizN7QkaUzcznPtsaQOXL5N+Ef2UjTcP8XMuOPNbwS29yqaYfrxAd1OyXzg1YaR3Z1SVUXZoFYxSmtvwf0SE9RBwFyl/XUgCP5/TjIHedxAuH4/49JLaTE0st5GD0JZuay6CmVg/UPnBb5ofaZ3IGU9dkwhoREkW9lRnIPxF8nwCwTe5TclJ3jTxAENpcNR/3gqLfARdO2XwlAi0ZzeLFFhY0iCGtojiHd3/7bro4Hp3RQzaIFdKrDPy12P7FJJPobtlirFq0TO3zTpPUEEd721n+avZLnZSMmABVAGAJCKKKLE07buDlDLgINL3i9Pid8LaVfAuWGsBw2qcAkqZGorx6EjnRNMhkY42F2EZwznFRV4eZ5HL0bq59ToHo5vStbotdjapMte+C33/H9cSHUKue5Z4FZr0TfTsBt49oGim7z5adeNfLo3TWP8BUGrVPIqdBfWdIyNT2BncRobyhL/M0zn0cr8iGcDNZ5Vx0Fiur+Gy70ky8GkX5kRBjZlalsQmbsQuX8K5Eg8DCCB3EwggVZoAMCAQICEzMAAAAVxedrngKbSZkAAAAAABUwDQYJKoZIhvcNAQELBQAwgYgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xMjAwBgNVBAMTKU1pY3Jvc29mdCBSb290IENlcnRpZmljYXRlIEF1dGhvcml0eSAyMDEwMB4XDTIxMDkzMDE4MjIyNVoXDTMwMDkzMDE4MzIyNVowfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDk4aZM57RyIQt5osvXJHm9DtWC0/3unAcH0qlsTnXIyjVX9gF/bErg4r25PhdgM/9cT8dm95VTcVrifkpa/rg2Z4VGIwy1jRPPdzLAEBjoYH1qUoNEt6aORmsHFPPFdvWGUNzBRMhxXFExN6AKOG6N7dcP2CZTfDlhAnrEqv1yaa8dq6z2Nr41JmTamDu6GnszrYBbfowQHJ1S/rboYiXcag/PXfT+jlPP1uyFVk3v3byNpOORj7I5LFGc6XBpDco2LXCOMcg1KL3jtIckw+DJj361VI/c+gVVmG1oO5pGve2krnopN6zL64NF50ZuyjLVwIYwXE8s4mKyzbnijYjklqwBSru+cakXW2dg3viSkR4dPf0gz3N9QZpGdc3EXzTdEonW/aUgfX782Z5F37ZyL9t9X4C626p+Nuw2TPYrbqgSUei/BQOj0XOmTTd0lBw0gg/wEPK3Rxjtp+iZfD9M269ewvPV2HM9Q07BMzlMjgK8QmguEOqEUUbi0b1qGFphAXPKZ6Je1yh2AuIzGHLXpyDwwvoSCtdjbwzJNmSLW6CmgyFdXzB0kZSU2LlQ+QuJYfM2BjUYhEfb3BvR/bLUHMVr9lxSUV0S2yW6r1AFemzFER1y7435UsSFF5PAPBXbGjfHCBUYP3irRbb1Hode2o+eFnJpxq57t7c+auIurQIDAQABo4IB3TCCAdkwEgYJKwYBBAGCNxUBBAUCAwEAATAjBgkrBgEEAYI3FQIEFgQUKqdS/mTEmr6CkTxGNSnPEP8vBO4wHQYDVR0OBBYEFJ+nFV0AXmJdg/Tl0mWnG1M1GelyMFwGA1UdIARVMFMwUQYMKwYBBAGCN0yDfQEBMEEwPwYIKwYBBQUHAgEWM2h0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2lvcHMvRG9jcy9SZXBvc2l0b3J5Lmh0bTATBgNVHSUEDDAKBggrBgEFBQcDCDAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBTV9lbLj+iiXGJo0T2UkFvXzpoYxDBWBgNVHR8ETzBNMEugSaBHhkVodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNSb29DZXJBdXRfMjAxMC0wNi0yMy5jcmwwWgYIKwYBBQUHAQEETjBMMEoGCCsGAQUFBzAChj5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRzL01pY1Jvb0NlckF1dF8yMDEwLTA2LTIzLmNydDANBgkqhkiG9w0BAQsFAAOCAgEAnVV9/Cqt4SwfZwExJFvhnnJL/Klv6lwUtj5OR2R4sQaTlz0xM7U518JxNj/aZGx80HU5bbsPMeTCj/ts0aGUGCLu6WZnOlNN3Zi6th542DYunKmCVgADsAW+iehp4LoJ7nvfam++Kctu2D9IdQHZGN5tggz1bSNU5HhTdSRXud2f8449xvNo32X2pFaq95W2KFUn0CS9QKC/GbYSEhFdPSfgQJY4rPf5KYnDvBewVIVCs/wMnosZiefwC2qBwoEZQhlSdYo2wh3DYXMuLGt7bj8sCXgU6ZGyqVvfSaN0DLzskYDSPeZKPmY7T7uG+jIa2Zb0j/aRAfbOxnT99kxybxCrdTDFNLB62FD+CljdQDzHVG2dY3RILLFORy3BFARxv2T5JL5zbcqOCb2zAVdJVGTZc9d/HltEAY5aGZFrDZ+kKNxnGSgkujhLmm77IVRrakURR6nxt67I6IleT53S0Ex2tVdUCbFpAUR+fKFhbHP+CrvsQWY9af3LwUFJfn6Tvsv4O+S3Fb+0zj6lMVGEvL8CwYKiexcdFYmNcP7ntdAoGokLjzbaukz5m/8K6TT4JDVnK+ANuOaMmdbhIurwJ0I9JZTmdHRbatGePu1+oDEzfbzL6Xu/OHBE0ZDxyKs6ijoIYn/ZcGNTTY3ugm2lBRDBcQZqELQdVTNYs6FwZvKhggLSMIICOwIBATCB/KGB1KSB0TCBzjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEpMCcGA1UECxMgTWljcm9zb2Z0IE9wZXJhdGlvbnMgUHVlcnRvIFJpY28xJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNOOjBBNTYtRTMyOS00RDREMSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBTZXJ2aWNloiMKAQEwBwYFKw4DAhoDFQDAfu8eKZIDN4Ms3SrNY1vana9Ef6CBgzCBgKR+MHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNVBAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwMA0GCSqGSIb3DQEBBQUAAgUA5sWslTAiGA8yMDIyMDkwOTE2MTQxM1oYDzIwMjIwOTEwMTYxNDEzWjB3MD0GCisGAQQBhFkKBAExLzAtMAoCBQDmxayVAgEAMAoCAQACAiO4AgH/MAcCAQACAhGQMAoCBQDmxv4VAgEAMDYGCisGAQQBhFkKBAIxKDAmMAwGCisGAQQBhFkKAwKgCjAIAgEAAgMHoSChCjAIAgEAAgMBhqAwDQYJKoZIhvcNAQEFBQADgYEAKqsqE4yqotg4GQzIzMK/JwAQXvWGeLIGqNlV793tvhYw9v82ug2eCPWk2gbT6MmAJK5lhEMtAA6RhXBOwoajbO76y+HZ2Nsd9lY0lT5qoNBjU7QhOAmR+CY90wkZoK3NVnuvlOsgqVjy62KTNKy7xoRg2Hv+2GU/HJ3/ejJlJogxggQNMIIECQIBATCBkzB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMAITMwAAAac1uy7CZIVQKQABAAABpzANBglghkgBZQMEAgEFAKCCAUowGgYJKoZIhvcNAQkDMQ0GCyqGSIb3DQEJEAEEMC8GCSqGSIb3DQEJBDEiBCCcHoNLqLCbS2BtkQGgWdcE4OQGrzRyHjSyXDTjmDHWsjCB+gYLKoZIhvcNAQkQAi8xgeowgecwgeQwgb0EIEfwf+cJlQLgvRipvPewffDmTOHAnhGoKRdcrE0+2o4bMIGYMIGApH4wfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTACEzMAAAGnNbsuwmSFUCkAAQAAAacwIgQge/jv9dR5GEZFrMYoaEx6OKbSGdw4i00V5QLDeUEmhHAwDQYJKoZIhvcNAQELBQAEggIAVJMtWph/8MSA6CJmsVHgmsZ3Li8A8ATzWH8P3RzvUsoxnkLMdcFSNLzOv9aGAKTymUfX5+ZuATZJ93igVx/t4GjFfvxdeAdL7lXVkVXiemP0s8enSG9+7F7LvKVe29SPcgGm2iTEiRW1g2UyRZ8cgClTPeZ1cuFOs1yABVLpHzevZWLHRnzELRZXDiDXxe9GTD72gKr3YjfyVxSt3KyxS2az0tGLACbsJoG5yIVRtHtT4/O5JEeY6gCk8xwNcMTkR5WWnVHcCs+vHwvQuBgwIG9iMogd7PHTZl1qX8HGEuQPSyVssp+oy0WQDfhbQCA4R6b1f0zOzxsTQkDheiFqdGm+I2y+71p6tdqLsJD/kos6upJDFq4jtYNbMGbxzya1RpWugEVcQzOVBCITOiP3UvYLoYTxclBQcDs7gbrEwvkzIQfpPwhYNTubfIso0nkrDIYm5argDmTPPBeRCdKKwx8rTZoFvCGYHejzf7FGq5YWISPVWizCgWPE23CtpBkGXt/R1vyuHMirnmd/rX7rCWDt4nfRpB10//xbID6YHoxpodOzDRLUQkTMTTI5FDNCrZB3nzZwARNwUlELFL7zZTtEsjjDYOFxjsEMd3aH5tzIdHcQQdIdf+NfqFGObTB+F5hpG1jAhZfWJNG0LGNXrP1E9NeTUhKkoFtffldiwfsAAAAA</CounterSignature></Object></Signature></doc>

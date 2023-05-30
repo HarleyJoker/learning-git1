@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.VisualStudio.RemoteControl</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.FileReader">
+            <summary>
+            An instance of this class represents reading from a particular file from disk.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.GetFileResult">
+            <summary>
+            Holds information about the settings file, downloaded from the server or from the
+            local IE cache. Returned by calls to methods in this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.Code">
+            <summary>
+            Gets or sets a status code of the response from server
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.RespStream">
+            <summary>
+            Gets or sets a stream to read the content of the settings file.
+            ! May be null if <seealso cref="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.Code" /> is not OK.
+            ! Callers must call Dispose on this object if it is not null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.IsFromCache">
+            <summary>
+            Gets or sets a value indicating whether this information is obtained from IE cache.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.AgeSeconds">
+            <summary>
+            Gets or sets the Age of the file in the cache if
+            <seealso cref="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.IsFromCache" /> is true, returns . Otherwise null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.ErrorMessage">
+            <summary>
+            Gets or sets the error message if <seealso cref="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.Code" /> is not
+            OK or NotFound.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.IsSuccessStatusCode">
+            <summary>
+            Gets a value indicating whether <seealso cref="P:Microsoft.VisualStudio.RemoteControl.GetFileResult.Code" /> is OK or
+            NotFound.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.IFileReader">
+            <summary>
+            An instance of this class represents reading from a particular file from disk.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale">
+            <summary>
+            Specifies the behavior of the IRemoteControlClient.ReadFile method
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale.ReturnStale">
+            <summary>
+            Return the settings file in the local cache irrespective of staleness.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale.ReturnNull">
+            <summary>
+            Return the settings file in the local cache if it is not stale. Otherwise return Null.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale.ForceDownload">
+            <summary>
+            Revalidate or download the file from the server and return it. WARNING:
+            * each server request is billed and costs add up from millions of clients.
+            * the only acceptable use of ForceDownload is very infrequently and if you absolutely cannot function
+              without the latest settings
+            * keep in mind that even once-per-process-lifetime may be too much if you process starts and stops very
+              frequently.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient">
+            <summary>
+            Interface for the client for the Remote Control Service.
+            This client polls the service for a single settings file and keeps it up-to-date in the local IE cache (which
+            is per-user). Developers may call the <see cref="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.ReadFile(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)" /> or
+            <see cref="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.ReadFileAsync(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)" /> to read settings file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.FullUrl">
+            <summary>
+            Gets a full URL used to download to the file. Read-Only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.PollingIntervalMins">
+            <summary>
+            Gets a polling Interval to check the file on the server. Read-Only.
+            This setting also determines when a file in the local IE cache is
+            considered stale.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.ReadFile(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)">
+            <summary>
+            Reads the settings file based on the <paramref name="staleBehavior" /> specified.
+            </summary>
+            <param name="staleBehavior">See <see cref="T:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale" /> for details about each possible setting.
+            In most cases use the BehaviorOnStale.ReturnStale setting.
+            !! WARNING about using BehaviorOnStale.ForceDownload !!
+            * each server request is billed and costs add up from millions of clients.
+            * the only acceptable use of ForceDownload is very infrequently and if you absolutely cannot function
+              without the latest settings.
+            * keep in mind that even once-per-process-lifetime may be too much if you process starts and stops very
+              frequently.
+            </param>
+            <returns>A Stream that can be used to read the setting file. !Callers must call Dispose on this stream
+            object returned. Or Null is returned in case of failure to get the file (or if server returned
+            NotFound).</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlClient.ReadFileAsync(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)">
+            <summary>
+            Reads the settings file based on the <paramref name="staleBehavior" /> specified. This is the Async version
+            of ReadFile method.
+            </summary>
+            <param name="staleBehavior">See <see cref="T:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale" /> for details about each possible setting.
+            In most cases use the BehaviorOnStale.ReturnStale setting.</param>
+            <returns>A Stream that can be used to read the setting file. !Callers must call Dispose on this stream
+            object returned. Or Null is returned in case of failure to get the file (or if server returned
+            NotFound).</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor">
+            <summary>
+            Provides operation to issue HTTP requests to obtain a file, either from the server or from the local IE cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor.GetFileFromServerAsync">
+            <summary>
+            Reads the file from the server url.
+            In case of errors reading the file from the server, returned <see cref="T:Microsoft.VisualStudio.RemoteControl.GetFileResult" /> object's
+            IsSuccessStatusCode value will be false.
+            </summary>
+            <returns>Information about the file obtained from the server</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor.GetFileFromCacheAsync">
+            <summary>
+            Reads the file from the local IE cache only.
+            If the file does not exist in the cache, the returned <see cref="T:Microsoft.VisualStudio.RemoteControl.GetFileResult" /> object's IsCached value
+            will be false and Code will be Unused.
+            </summary>
+            <returns>Information about the file in the IE cache</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor.LastServerRequestErrorSecondsAgoAsync">
+            <summary>
+            Gets the elapsed time (in seconds) since the last error in downloading / revalidating the file from the
+            server.
+            </summary>
+            <returns>Time in seconds since last error or Int.MaxValue if no error has ever occured.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor.Cancel">
+            <summary>
+            Cancels all in progress HTTP requests. Any future calls to this class should not be made.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.RemoteControlClient">
+            <summary>
+            Client for the Remote Control Service.
+            This client polls the service for a single settings file and keeps it up-to-date in the local IE cache (which
+            is per-user).
+            Developers may call the <see cref="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.ReadFile(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)" /> or <see cref="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.ReadFileAsync(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)" /> to read settings file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates the client and starts polling.
+            </summary>
+            <param name="hostId">HostId of the settings file (used to construct URL to the file:
+            [baseUrl]/[hostId]/[relativePath]).</param>
+            <param name="baseUrl">Base URL of the service e.g. https://az700632.vo.msecnd.net</param>
+            <param name="relativePath">Relative path used to contruct the full URL to the file:
+            [baseUrl]/[hostId]/[relativePath]</param>
+            <param name="pollingIntervalMins">Optional. Default = 1440 minutes (24 hours). Min allowed = 5 minutes.
+            Polling Interval (in minutes) to check the file on the server when the last request to the server
+            succeeded.</param>
+            <param name="theHttpRequestTimeoutSeconds">Optional. Default = 60 seconds. Maximum allowed = 60 seconds.
+            HTTP request timeout used.</param>
+            <param name="overrideReadFileTelemetryFrequency">Optional. Allows to set how often to send successful
+            ReadFile telemetry, to prevent noise events Default = 1 (meaning post ReadFile telemetry every time). Min
+            allowed is 1.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.#ctor(Microsoft.VisualStudio.RemoteControl.IRemoteControlHTTPRequestor,Microsoft.VisualStudio.Utilities.Internal.IRegistryTools,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Only for testing. Testing "fake" IE Cache or "fake" server response
+            </summary>
+            <param name="requestor"></param>
+            <param name="theRegistryTools"></param>
+            <param name="hostId"></param>
+            <param name="baseUrl"></param>
+            <param name="relativePath"></param>
+            <param name="pollingIntervalMins"></param>
+            <param name="httpRequestTimeoutSeconds"></param>
+            <param name="maxRandomDownloadDelaySeconds"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.#ctor(Microsoft.VisualStudio.Utilities.Internal.IRegistryTools,Microsoft.VisualStudio.RemoteControl.IFileReader,System.String,System.String,System.String)">
+            <summary>
+            Only for testing. Testing local functionality
+            </summary>
+            <param name="theRegistryTools"></param>
+            <param name="theFileReader"></param>
+            <param name="hostId"></param>
+            <param name="baseUrl"></param>
+            <param name="relativePath"></param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.TelemetryLogger">
+            <summary>
+            Gets or sets an action which allows setting of a Telemetry Logger to
+            collect telemetry for usage of the Remote Control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.TelemetryLogger2">
+            <summary>
+            Gets or sets an action which allows setting of a Telemetry Logger to
+            collect telemetry for usage of the Remote Control. Includes Pii-option.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.FullUrl">
+            <summary>
+            Gets a full URL used to download to the file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.PollingIntervalMins">
+            <summary>
+            Gets a polling Interval to check the file on the server. This setting also determines
+            when a file in the local IE cache is considered stale.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.ReadFile(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)">
+            <summary>
+            Reads the settings file based on the <paramref name="staleBehavior" /> specified.
+            </summary>
+            <param name="staleBehavior">See <see cref="T:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale" /> for details about each possible setting.
+            In most cases use the BehaviorOnStale.ReturnStale setting.</param>
+            <returns>A Stream that can be used to read the setting file. !Callers must call Dispose on this stream
+            object returned. Or Null is returned in case of failure to get the file (or if server returned
+            NotFound).</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.ReadFileAsync(Microsoft.VisualStudio.RemoteControl.BehaviorOnStale)">
+            <summary>
+            Reads the settings file based on the <paramref name="staleBehavior" /> specified. This is the Async version
+            of ReadFile method.
+            </summary>
+            <param name="staleBehavior">See <see cref="T:Microsoft.VisualStudio.RemoteControl.BehaviorOnStale" /> for details about each possible setting.
+            In most cases use the BehaviorOnStale.ReturnStale setting.</param>
+            <returns>A Stream that can be used to read the setting file. !Callers must call Dispose on this stream
+            object returned. Or Null is returned in case of failure to get the file (or if server returned
+            NotFound).</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.Dispose">
+            <summary>
+            Disposes of client
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.CacheUpdateTimerCallback(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Callback method for the update timer.
+            </summary>
+            <param name="stateInfo">Dummy</param>
+            <param name="token">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.EnsureFileIsUpToDateAsync(System.Threading.CancellationToken)">
+            <summary>
+            Determines if a local IE cache copy of the file is up-to-date. If no cached copy is available or the
+            cached copy is not up-to-date, a request is made to the server to download or revalidate the file. The
+            result of the server request is cached.
+            </summary>
+            <param name="cancellationToken">Cancellation token to cancel waiting of operation</param>
+            <returns>Returns True if the copy in the IE cache is up-to-date by the end of the method. False in case of
+            failures that prevent updating file.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.GetFileAndInstrumentAsync(System.Boolean)">
+            <summary>
+            Get a file and send telemetry events.
+            </summary>
+            <param name="fromServer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlClient.InstrumentGetFile(Microsoft.VisualStudio.RemoteControl.GetFileResult)">
+            <summary>
+            Instruments the usage of GetFileFromCache and GetFileFromServer.
+            </summary>
+            <param name="fileResult"></param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor">
+            <summary>
+            Provides operation to issue HTTP requests to obtain a file, either from the server or from the local IE cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.#ctor(System.String,System.Int32)">
+            <summary>
+            Ctor
+            </summary>
+            <param name="url">Server URL to obtain the settings file</param>
+            <param name="httpRequestTimeoutMillis">Timeout in milliseconds for the HTTP requests issued by this
+            class</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.Microsoft#VisualStudio#RemoteControl#IRemoteControlHTTPRequestor#GetFileFromServerAsync">
+            <summary>
+            Reads the file from the server url.
+            In case of errors reading the file from the server, returned <see cref="T:Microsoft.VisualStudio.RemoteControl.GetFileResult" /> object's
+            IsSuccessStatusCode value will be false.
+            </summary>
+            <returns>Information about the file obtained from the server</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.Microsoft#VisualStudio#RemoteControl#IRemoteControlHTTPRequestor#GetFileFromCacheAsync">
+            <summary>
+            Reads the file from the local IE cache only.
+            If the file does not exist in the cache, the returned <see cref="T:Microsoft.VisualStudio.RemoteControl.GetFileResult" /> object's IsFromCache value
+            will be false and Code will be Unused.
+            </summary>
+            <returns>Information about the file in the IE cache</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.Microsoft#VisualStudio#RemoteControl#IRemoteControlHTTPRequestor#LastServerRequestErrorSecondsAgoAsync">
+            <summary>
+            Gets the elapsed time (in seconds) since the last error in downloading / revalidating the file from the
+            server.
+            </summary>
+            <returns>Time in seconds since last error or Int.MaxValue if no error has ever occured.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.Microsoft#VisualStudio#RemoteControl#IRemoteControlHTTPRequestor#Cancel">
+            <summary>
+            Cancels all in progress HTTP requests. Any future calls to this class should not be made.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.ExtractAgeHeaderValue(System.Net.HttpWebResponse)">
+            <summary>
+            Extracts the value of Age header from <paramref name="resp" />.
+            </summary>
+            <param name="resp">HTTP response</param>
+            <returns>If Age header is present on <paramref name="resp" />can is valid,
+            returns its value. Otherwise null.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.CreateHttpRequest(System.String)">
+             <summary>
+             In .Net 4.0 and above, in some cases, ConfigurationErrorsException
+             will not be catch without the HandleProcessCorruptedStateExceptions
+             and SecurityCritical attributes. The method should not be async.
+            
+             See Bug 172014 and
+             https://msdn.microsoft.com/en-us/magazine/dd419661.aspx
+             </summary>
+             <param name="requestUrl"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.GetFile(System.String,System.Int32,System.Net.Cache.HttpRequestCachePolicy)">
+            <summary>
+            This is the HTTP-facing method in the class. It essentially performs all functions of
+                1. sending an HTTP request for the file
+                2. if the response is from the server, ensuring that it is added to the IE cache
+                3. additonal logic to cache error responses in the IE cache. By default error
+                   responses are not cached.
+            </summary>
+            <param name="requestUrl"></param>
+            <param name="requestTimeoutMillis"></param>
+            <param name="cachePolicy">Specifies chache policy to use when sending the request</param>
+            <returns>Result of the file lookup. See <see cref="T:Microsoft.VisualStudio.RemoteControl.GetFileResult" /> for details.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlHTTPRequestor.WrapInSeekableStreamAsync(System.IO.Stream)">
+            <summary>
+            Copies all data in <paramref name="s" /> to a new Memory Stream to allow seeking.
+            </summary>
+            <param name="s">Original Stream</param>
+            <returns>A new in memory stream</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.RemoteControlUri">
+            <summary>
+            URI with optional redirect.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlUri.IsLocalFile">
+            <summary>
+            Gets a value indicating whether the URI points to a local file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlUri.FullUrl">
+            <summary>
+            Gets a full URI string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.RemoteControl.RemoteControlUri.HostId">
+            <summary>
+            Gets a Host Id which was used to initialize the URI.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.RemoteControlUri.Create(Microsoft.VisualStudio.Utilities.Internal.IRegistryTools,System.String,System.String,System.String)">
+            <summary>
+            Creates a new URI with optional redirect.
+            </summary>
+            <param name="registryTools"></param>
+            <param name="hostId"></param>
+            <param name="baseUrl"></param>
+            <param name="relativePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.UriEx.SplitLastSegment(System.Uri)">
+            <summary>
+            Split the last path segment from the given URI.
+            </summary>
+            <param name="uri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.UriEx.AddSegment(System.Uri,System.String)">
+            <summary>
+            Add a path segment to the given URI. The path segment may contain trailling '/'.
+            </summary>
+            <param name="uri"></param>
+            <param name="segment"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.RemoteControl.WinINetHelper">
+            <summary>
+            Provides a helper method to write empty files to the local IE cache. This is useful for writing HTTP error
+            responses to the cache. Although caching of error responses is entirely allowed by HTTP protocol, The
+            System.Net library does not add error responses to the cache. So, this helper library is used to call
+            wininet.dll functions to do so.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.RemoteControl.WinINetHelper.WriteErrorResponseToCache(System.String,System.Net.HttpStatusCode)">
+            <summary>
+            Adds an empty file to the local IE cache with the <paramref name="status" />header for the
+            specified<paramref name="url" />.
+            </summary>
+            <param name="url">URL for which to add the cache entry</param>
+            <param name="status">Status of the response to cache</param>
+            <returns>True if operation succeeded. Otherwise false.</returns>
+        </member>
+    </members>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>LliLyEAbU3J+WgGUtbiQsPB5Fu5iUIov7F9EvJycIGo=</DigestValue></Reference></SignedInfo><SignatureValue>JQaZnMyiGqZaBnA9wCFCD7pDgB5G2nkMkoI+NlpoOOxkhM5xnySmy12SdUjf3h1WZllJfRN2Q4R/C4wEmxXeImIJWbcXDW0ZcYwZ5Zhy4pAcGlH1y0sbrVtkDzEZOA/twCzTmQlTCmz7hpcm1NbFxomNvYReqDgWHFiTErQ/Z8oF4OAXDf4z2u8Nv7k6FK+P0gPk9y9vGHRy4qLDW6dR/tJ6rwm9N4BAEGHPieoaGmYGKSCTJ4Nra1MWLsu8UrMvSWcFZ5vs0XZg81FOyChFckkvbU/UseJFS2rG/aPxbDescOsOWmoU78T0nzVat4dnlGLtsEuqjihhS4fWZgT/dw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>0OTPj7P1+wTbr+Qf9COrqA8I9DSTqNSq1UKju4IEV3HJJck61i+MTEoYyKLtiLG2Jxeu8F81QKuTpuKHvi380gzs43G+prNNIAaNDkGqsENQYo8iezbw3/NCNX1vTi++irdFqXNs6xoc3B3W+7qT678b0jTVL8St7IMO2E7d9eNdL6RKfMnwRJf4XfGcwL+OwwoCeY9c5tvebNUVWRzaejKIkBVThApuAMCtpdvIvmBEdSTuCKZUx+OLr81/aEZyR2jL1s2RKaMz8uIzTtgw6m3DbOM4ewFjIRNT1hVQPghyPxJ+ZwErwry5rkf7fKuG3PF0fECGSUEqftlOptpXTQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>MIIF7TCCA9WgAwIBAgIQP4vItfyfspZDtWnWbELhRDANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IDIwMTEwHhcNMTEwMzIyMjIwNTI4WhcNMzYwMzIyMjIxMzA0WjCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IDIwMTEwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCygEGqNThNE3IyaCJNuLLx/9VSvGzH9dJKjDbu0cJcfoyKrq8TKG/Ac+M6ztAlqFo6be+ouFmrEyNozQwph9FvgFyPRH9dkAFSWKxRxV8qh9zc2AodwQO5e7BW6KPeZGHCnvjzfLnsDbVU/ky2ZU+I8JxImQxCCwl8MVkXeQZ4KI2JOkwDJb5xalwL54RgpJki49KvhKSn+9GY7Qyp3pSJ4Q6g3MDOmT3qCFK7VnnkH4S6Hri0xElcTzFLh93dBWcmmYDgcRGjuKVB4qRTufcyKYMME782XgSzS0NHL2vikR7TmE/dQgfI6B0S/Jmpaz6SfsjWaTr8ZL22CZ3K/QwLopt3YEsDlKQwaRLWQi3BQUzK3Kr9j1uDRprZ/LHR47PJf0h6zSTwQY9cdNCssBAgBkm3xy0hyFfj0IbzA2j70M5xwYmZSmQBbP3sMJHPQTySx+W6hh1hhMdfgzlirrSSL0fzC/hV66AfWdC7dJse0Hbm8ukG1xDo+mTeacY1logC8Ea4PyeZb8txiSk190gWAjWP1Xl8TQLPX+uKg09FcYj5qQ1OcunCnAfPSRtOBA5jUYxe2ADBVSy2xuDCZU7JNDn1nLPEfuhhbhNfFcRf2X7tHc7uROzLLoax7Dj2cO2rXBPB2Q8Nx4CyVe0096yb5MPa50c8prWPMd/FS6/r8QIDAQABo1EwTzALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUci06AjGQQ7kUBU7h6qfHMdEjiTQwEAYJKwYBBAGCNxUBBAMCAQAwDQYJKoZIhvcNAQELBQADggIBAH9yzw+3xRXbm8BJyiZb/p4T5tPw0tuXX/JLP02zrhmu7deXoKzvqTqjwkGw5biRnhOBJAPmCf0/V0A5ISRW0RAvS0CpNoZLtFNXmvvxfomPEf4YbFGq6O0JlbXlccmh6Yd1phV/yX43VF50k8XDZ8wNT2uoFwxtCJJ+i92Bqi1wIcM9BhS7vyRep4TXPw8hIr1LAAbblxzYXtTFC1yHblCk6MM4pPvLLMWSZpuFXst6bJN8gClYW1e1QGm6CHmmZGIVnYeWRbVmIyADixxzoNOieTPgUFmG2y/lAiXqcyqfABTINseSO+lOAOzYVgm5M0kS0lQLAausR7aRKX1MtHWAUgHoyoL2n8ysnI8X6i8msKtyrAv+nlEex0NVZ09Rs1fWtuzuUrc66U7h14GIvE+OdbtLqPA1qibUZ2dJsnBMO5PcHd94kIZysjik0dySTclY6ysSXNQ7roxrsIPlAT/4CTL2kzU0Iq/dNw13CYArzUgA8YyZGUcFAenRv9FO0OYoQzeZpApKCNmacXPSqs0xE2N2oTdvkjgefRI8ZjLny23h/FKJ3crWZgWalmG+oijHHKOnNlA8OqTfSm7mhzvO6/DggTedEzxSjr25HTTGHdUKaj2YKXCMiSrRq4IQSB/c9O+lxbtVGjhjhE63bK2VVOxlIhBJF7jAHscPrFRH</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>MIIE8TCCA9mgAwIBAgITMwAAAUedj/Hm3jGDWQAAAAABRzANBgkqhkiG9w0BAQsFADB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMDAeFw0yMDExMTIxODI1NTVaFw0yMjAyMTExODI1NTVaMIHKMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSUwIwYDVQQLExxNaWNyb3NvZnQgQW1lcmljYSBPcGVyYXRpb25zMSYwJAYDVQQLEx1UaGFsZXMgVFNTIEVTTjpFNUE2LUUyN0MtNTkyRTElMCMGA1UEAxMcTWljcm9zb2Z0IFRpbWUtU3RhbXAgU2VydmljZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK0FA0zpffYoWT8Enxhqmt/MS3ouPfgb5UuPOB8SA4ZJV3Uy7ucKmErQrijI+vMi2A1GMHiBSIqrobODF0MeBk+BMS+bnvOxqxzIavJtaR/dVWvxup/Y8iAa/AoM0SBVzKCwRu5bBfP0uLozsA6gPhMHx+XgBOb4vtvj6VgNQwlgwvOmInMzvjlrRceKuJRo6lhZ+TA70fPq5/6TYervIbKC4fydo8sydh+Zgi3Y9cDBZW8bgwPhhuNcFVnXi56HtiWplMy5ref2RPUJkOwe/P6jnyeyhqZdHBEU5vssONVX75xkhks7b26yIjQfv21vd9K+H21TtALsKKs0IFhqA0kCAwEAAaOCARswggEXMB0GA1UdDgQWBBS0+Nxv3mShhlcbL0M/E3j11IKwujAfBgNVHSMEGDAWgBTVYzpcijGQ80N7fEYbxTNoWoVtVTBWBgNVHR8ETzBNMEugSaBHhkVodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNUaW1TdGFQQ0FfMjAxMC0wNy0wMS5jcmwwWgYIKwYBBQUHAQEETjBMMEoGCCsGAQUFBzAChj5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRzL01pY1RpbVN0YVBDQV8yMDEwLTA3LTAxLmNydDAMBgNVHRMBAf8EAjAAMBMGA1UdJQQMMAoGCCsGAQUFBwMIMA0GCSqGSIb3DQEBCwUAA4IBAQBQxA7KNX55raQS1eoPRw58PZnY8VQjLmQuQZTndEMZx+GXMhH1CVOBkupMSGAsu4JLLqNyZr6c+Dt7leDWioJlxklHC1E/NLUXr8zphHfkfdus3SZpWc+uatD3WSR+w2oNO25YOIAgF+Q0SAKlBkJvg5Xccy7kvx5nODl1RontcT4sG6mElIsUm1pvFi3h+QJDGdMPbPnRjfZm5eI2YUWJrupWr7dhzeaZbTb78pYfw/Uc+KhskbxysZiBISTG2RRcZ2i63AZZbzwpH1FFwz/gYouq3Y5DwBYRBvuyGAzynE2+7fRPF6NEClrhYB84B6NMbj4rMGbrteNVnYiVcA+S</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">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</CounterSignature></Object></Signature></doc>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.CodeAnalysis.AnalyzerUtilities</id>
+    <version>3.3.0</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/dotnet/roslyn-analyzers</projectUrl>
+    <description>Analyzer utilities for various analyses, including Dataflow analysis based on ControlFlowGraph API in Microsoft.CodeAnalysis.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Roslyn Analyzer Utilities CodeAnalysis Dataflow ControlFlowGraph FlowAnalysis Compiler CSharp VB VisualBasic Diagnostic Analyzers Syntax Semantics</tags>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/roslyn-analyzers" commit="596f8f422003d89b65e2bd50dc5a1aea7ce4ce91" />
+  </metadata>
+</package>

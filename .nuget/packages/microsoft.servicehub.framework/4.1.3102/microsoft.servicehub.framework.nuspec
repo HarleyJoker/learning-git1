@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.ServiceHub.Framework</id>
+    <version>4.1.3102</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aka.ms/vsextensibility</projectUrl>
+    <description>The distributed ServiceHub Framework</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>ServiceHub</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.ServiceHub.Analyzers" version="4.1.3102" include="All" />
+        <dependency id="StreamJsonRpc" version="2.14.24" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="6.0.0" include="Runtime,Build,Native,ContentFiles,Analyzers,BuildTransitive" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNetCore.Connections.Abstractions</id>
+    <version>6.0.14</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>Icon.png</icon>
+    <projectUrl>https://asp.net/</projectUrl>
+    <description>Core components of ASP.NET Core networking protocol stack.
+
+This package was built from the source code at https://github.com/dotnet/aspnetcore/tree/54e8b61777d42d2b10744d1987438ee5b8c0b24d</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>aspnetcore</tags>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/aspnetcore" commit="54e8b61777d42d2b10744d1987438ee5b8c0b24d" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="Microsoft.Extensions.Features" version="6.0.14" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Pipelines" version="6.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.Extensions.Features" version="6.0.14" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Pipelines" version="6.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Extensions.Features" version="6.0.14" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Pipelines" version="6.0.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Microsoft.Extensions.Features" version="6.0.14" exclude="Build,Analyzers" />
+        <dependency id="System.IO.Pipelines" version="6.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Utilities.Internal</id>
+    <version>16.3.38</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://www.visualstudio.com/en-us/support/legal/mt736439</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <projectUrl>http://aka.ms/VsExtensibility</projectUrl>
+    <description>Microsoft® Visual Studio® Common Utility Library</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://devdiv.visualstudio.com/DevDiv/_git/CommonInternalUtilities" commit="bbb0432ee6ca891802b2b9f94bb4d411bea7721f" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Win32.Registry" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

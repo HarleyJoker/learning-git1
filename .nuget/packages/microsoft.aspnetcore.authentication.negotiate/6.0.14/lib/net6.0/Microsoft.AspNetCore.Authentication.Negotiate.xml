@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNetCore.Authentication.Negotiate</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticatedContext">
+            <summary>
+            State for the Authenticated event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticatedContext.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authentication.AuthenticationScheme,Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticatedContext"/>.
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticationFailedContext">
+            <summary>
+            State for the AuthenticationFailed event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticationFailedContext.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authentication.AuthenticationScheme,Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticationFailedContext"/>.
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.AuthenticationFailedContext.Exception">
+            <summary>
+            The exception that occurred while processing the authentication.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext">
+            <summary>
+            State for the Challenge event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authentication.AuthenticationScheme,Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions,Microsoft.AspNetCore.Authentication.AuthenticationProperties)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext"/>.
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext.Handled">
+            <summary>
+            Gets a value that determines if this challenge was handled.
+            If <see langword="true"/>, will skip any default logic for this challenge.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext.HandleResponse">
+            <summary>
+            Skips any default logic for this challenge.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.LdapContext">
+            <summary>
+            State for the RetrieveLdapClaims event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.LdapContext.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Authentication.AuthenticationScheme,Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions,Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.LdapContext"/>.
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapContext.LdapSettings">
+            <summary>
+            The LDAP settings to use for the RetrieveLdapClaims event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents">
+            <summary>
+            Specifies events which the <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler"/> invokes to enable developer control over the authentication process.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.OnAuthenticationFailed">
+            <summary>
+            Invoked if exceptions are thrown during request processing. The exceptions will be re-thrown after this event unless suppressed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.OnRetrieveLdapClaims">
+            <summary>
+            Invoked after the authentication before ClaimsIdentity is populated with claims retrieved through the LDAP connection.
+            This event is invoked when <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.EnableLdapClaimResolution"/> is set to true on <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.OnAuthenticated">
+            <summary>
+            Invoked after the authentication is complete and a ClaimsIdentity has been generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.OnChallenge">
+            <summary>
+            Invoked before a challenge is sent back to the caller.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.AuthenticationFailed(Microsoft.AspNetCore.Authentication.Negotiate.AuthenticationFailedContext)">
+            <summary>
+            Invoked if exceptions are thrown during request processing. The exceptions will be re-thrown after this event unless suppressed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.RetrieveLdapClaims(Microsoft.AspNetCore.Authentication.Negotiate.LdapContext)">
+            <summary>
+            Invoked after the authentication before ClaimsIdentity is populated with claims retrieved through the LDAP connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.Authenticated(Microsoft.AspNetCore.Authentication.Negotiate.AuthenticatedContext)">
+            <summary>
+            Invoked after the authentication is complete and a ClaimsIdentity has been generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateEvents.Challenge(Microsoft.AspNetCore.Authentication.Negotiate.ChallengeContext)">
+            <summary>
+            Invoked before a challenge is sent back to the caller.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings">
+            <summary>
+            Options class for configuring LDAP connections on Linux
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.EnableLdapClaimResolution">
+            <summary>
+            Configure whether LDAP connection should be used to resolve claims.
+            This is mainly used on Linux.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.Domain">
+            <summary>
+            The domain to use for the LDAP connection. This is a mandatory setting.
+            </summary>
+            <example>
+            DOMAIN.com
+            </example>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountName">
+            <summary>
+            The machine account name to use when opening the LDAP connection.
+            If this is not provided, the machine wide credentials of the
+            domain joined machine will be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountPassword">
+            <summary>
+            The machine account password to use when opening the LDAP connection.
+            This must be provided if a <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountName"/> is provided.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.IgnoreNestedGroups">
+            <summary>
+            This option indicates whether nested groups should be ignored when
+            resolving Roles. The default is false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.LdapConnection">
+            <summary>
+            The <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.LdapConnection"/> to be used to retrieve role claims.
+            If no explicit connection is provided, an LDAP connection will be
+            automatically created based on the <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.Domain"/>,
+            <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountName"/> and <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountPassword"/>
+            options. If provided, this connection will be used and the
+            <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.Domain"/>, <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountName"/> and
+            <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.MachineAccountPassword"/>  options will not be used to create
+            the <see cref="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.LdapConnection"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.ClaimsCacheSlidingExpiration">
+            <summary>
+            The sliding expiration that should be used for entries in the cache for user claims, defaults to 10 minutes.
+            This is a sliding expiration that will extend each time claims for a user is retrieved.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.ClaimsCacheAbsoluteExpiration">
+            <summary>
+            The absolute expiration that should be used for entries in the cache for user claims, defaults to 60 minutes.
+            This is an absolute expiration that starts when a claims for a user is retrieved for the first time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.ClaimsCacheSize">
+            <summary>
+            The maximum size of the claim results cache, defaults to 100 MB.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings.Validate">
+            <summary>
+            Validates the <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateDefaults">
+            <summary>
+            Default values used by Negotiate authentication.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateDefaults.AuthenticationScheme">
+            <summary>
+            Default value for AuthenticationScheme used to identify the Negotiate auth handler.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler">
+            <summary>
+            Authenticates requests using Negotiate, Kerberos, or NTLM.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler"/>
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.Events">
+            <summary>
+            The handler calls methods on the events which give the application control at certain points where processing is occurring.
+            If it is not provided a default instance is supplied which does nothing when the methods are called.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.CreateEventsAsync">
+            <summary>
+            Creates the default events type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.HandleRequestAsync">
+            <summary>
+            Intercepts incomplete Negotiate authentication handshakes and continues or completes them.
+            </summary>
+            <returns><see langword="true" /> if a response was generated, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.HandleAuthenticateAsync">
+            <summary>
+            Checks if the current request is authenticated and returns the user.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler.HandleChallengeAsync(Microsoft.AspNetCore.Authentication.AuthenticationProperties)">
+            <summary>
+            Issues a 401 WWW-Authenticate Negotiate challenge.
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions">
+            <summary>
+            Options class provides information needed to control Negotiate Authentication handler behavior
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.Events">
+            <summary>
+            The object provided by the application to process events raised by the negotiate authentication handler.
+            The application may use the existing NegotiateEvents instance and assign delegates only to the events it
+            wants to process. The application may also replace it with its own derived instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.PersistKerberosCredentials">
+            <summary>
+            Indicates if Kerberos credentials should be persisted and re-used for subsquent anonymous requests.
+            This option must not be used if connections may be shared by requests from different users.
+            </summary>
+            <value>Defaults to <see langword="false"/>.</value>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.PersistNtlmCredentials">
+            <summary>
+            Indicates if NTLM credentials should be persisted and re-used for subsquent anonymous requests.
+            This option must not be used if connections may be shared by requests from different users.
+            </summary>
+            <value>Defaults to <see langword="true"/>.</value>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.LdapSettings">
+            <summary>
+            Configuration settings for LDAP connections used to retrieve claims.
+            This should only be used on Linux systems.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.EnableLdap(System.String)">
+            <summary>
+            Use LDAP connections used to retrieve claims for the given domain.
+            This should only be used on Linux systems.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.EnableLdap(System.Action{Microsoft.AspNetCore.Authentication.Negotiate.LdapSettings})">
+            <summary>
+            Use LDAP connections used to retrieve claims using the configured settings.
+            This should only be used on Linux systems.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions.DeferToServer">
+            <summary>
+            Indicates if integrated server Windows Auth is being used instead of this handler.
+            See <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.PostConfigureNegotiateOptions"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Authentication.Negotiate.PostConfigureNegotiateOptions">
+            <summary>
+            Reconfigures the NegotiateOptions to defer to the integrated server authentication if present.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.PostConfigureNegotiateOptions.#ctor(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Hosting.Server.IServerIntegratedAuth},Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Authentication.Negotiate.NegotiateHandler})">
+            <summary>
+            Creates a new <see cref="T:Microsoft.AspNetCore.Authentication.Negotiate.PostConfigureNegotiateOptions"/>
+            </summary>
+            <param name="serverAuthServices"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Authentication.Negotiate.PostConfigureNegotiateOptions.PostConfigure(System.String,Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions)">
+            <summary>
+            Invoked to post configure a TOptions instance.
+            </summary>
+            <param name="name">The name of the options instance being configured.</param>
+            <param name="options">The options instance to configure.</param>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.NegotiateExtensions">
+            <summary>
+            Extensions for enabling Negotiate authentication.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.NegotiateExtensions.AddNegotiate(Microsoft.AspNetCore.Authentication.AuthenticationBuilder)">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/> to use Negotiate (also known as Windows, Kerberos, or NTLM) authentication
+            using the default scheme from <see cref="F:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateDefaults.AuthenticationScheme"/>.
+            <para>
+            This authentication handler supports Kerberos on Windows and Linux servers.
+            </para>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/>.</param>
+            <returns>The original builder.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.NegotiateExtensions.AddNegotiate(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.Action{Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions})">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/> to use Negotiate (also known as Windows, Kerberos, or NTLM) authentication
+            using the default scheme. The default scheme is specified by <see cref="F:Microsoft.AspNetCore.Authentication.Negotiate.NegotiateDefaults.AuthenticationScheme"/>.
+            <para>
+            This authentication handler supports Kerberos on Windows and Linux servers.
+            </para>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/>.</param>
+            <param name="configureOptions">Allows for configuring the authentication handler.</param>
+            <returns>The original builder.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.NegotiateExtensions.AddNegotiate(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.String,System.Action{Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions})">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/> to use Negotiate (also known as Windows, Kerberos, or NTLM) authentication
+            using the specified authentication scheme.
+            <para>
+            This authentication handler supports Kerberos on Windows and Linux servers.
+            </para>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/>.</param>
+            <param name="authenticationScheme">The scheme name used to identify the authentication handler internally.</param>
+            <param name="configureOptions">Allows for configuring the authentication handler.</param>
+            <returns>The original builder.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.NegotiateExtensions.AddNegotiate(Microsoft.AspNetCore.Authentication.AuthenticationBuilder,System.String,System.String,System.Action{Microsoft.AspNetCore.Authentication.Negotiate.NegotiateOptions})">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/> to use Negotiate (also known as Windows, Kerberos, or NTLM) authentication
+            using the specified authentication scheme.
+            <para>
+            This authentication handler supports Kerberos on Windows and Linux servers.
+            </para>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticationBuilder"/>.</param>
+            <param name="authenticationScheme">The scheme name used to identify the authentication handler internally.</param>
+            <param name="displayName">The name displayed to users when selecting an authentication handler. The default is null to prevent this from displaying.</param>
+            <param name="configureOptions">Allows for configuring the authentication handler.</param>
+            <returns>The original builder.</returns>
+        </member>
+    </members>
+</doc>

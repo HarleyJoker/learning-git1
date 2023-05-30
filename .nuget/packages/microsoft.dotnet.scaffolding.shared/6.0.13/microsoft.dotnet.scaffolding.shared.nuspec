@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.DotNet.Scaffolding.Shared</id>
+    <version>6.0.13</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>Icon.png</icon>
+    <projectUrl>https://github.com/dotnet/Scaffolding</projectUrl>
+    <description>Contains interfaces for Project Model and messaging for scaffolding.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>aspnetcore codegenerator scaffolding visualstudioweb</tags>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/Scaffolding" commit="574db7a5849b04d4ea2b7b79dfa961d167dacde7" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Features" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Workspaces" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.Features" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.VisualBasic.Features" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.VisualBasic.Workspaces" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.Workspaces.MSBuild" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="NuGet.Packaging" version="6.3.1" exclude="Build,Analyzers" />
+        <dependency id="NuGet.ProjectModel" version="6.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Immutable" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Configuration.ConfigurationManager" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Private.Uri" version="4.3.2" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

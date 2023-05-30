@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.RemoteControl</id>
+    <version>16.3.44</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://www.visualstudio.com/en-us/support/legal/mt736442</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <projectUrl>http://aka.ms/VsExtensibility</projectUrl>
+    <description>Microsoft® Visual Studio® Remote Control Library</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://devdiv.visualstudio.com/DevDiv/_git/VSRemoteControl" commit="3570b3f308e29fe8200d634863aa79b5c6f640c1" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.VisualStudio.Utilities.Internal" version="16.3.36" include="Runtime,Build,Native,ContentFiles,Analyzers,BuildTransitive" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.VisualStudio.Utilities.Internal" version="16.3.36" include="Runtime,Build,Native,ContentFiles,Analyzers,BuildTransitive" />
+        <dependency id="System.Configuration.ConfigurationManager" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem.AccessControl" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

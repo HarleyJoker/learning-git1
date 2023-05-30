@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Utilities</id>
+    <version>17.5.33428.366</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <projectUrl>https://aka.ms/vsextensibility</projectUrl>
+    <description>A member of the Visual Studio SDK</description>
+    <releaseNotes>https://go.microsoft.com/fwlink/?LinkID=746387</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Microsoft VisualStudio VSSDK SDK</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Microsoft.IO.Redist" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ServiceHub.Framework" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ServiceHub.Resources" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.RpcContracts" version="17.5.21" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Telemetry" version="16.6.21" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.24" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.AccessControl" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.ServiceHub.Framework" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ServiceHub.Resources" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.RpcContracts" version="17.5.21" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Telemetry" version="16.6.21" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.24" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.AccessControl" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0-windows8.0">
+        <dependency id="Microsoft.ServiceHub.Framework" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ServiceHub.Resources" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.RpcContracts" version="17.5.21" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Telemetry" version="16.6.21" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.24" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.AccessControl" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.ServiceHub.Framework" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.ServiceHub.Resources" version="4.1.3102" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.RpcContracts" version="17.5.21" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Telemetry" version="16.6.21" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.24" exclude="Build,Analyzers" />
+        <dependency id="System.ComponentModel.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Composition" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.AccessControl" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Dataflow" version="6.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0" />
+      <group targetFramework="net6.0-windows8.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App" />
+      </group>
+      <group targetFramework=".NETFramework4.7.2" />
+      <group targetFramework=".NETStandard2.0" />
+    </frameworkReferences>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="netstandard" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

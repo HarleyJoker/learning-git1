@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.ServiceHub.Analyzers</id>
+    <version>4.1.3102</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aka.ms/vsextensibility</projectUrl>
+    <description>Static code analyzer to detect common mistakes or potential issues when using ServiceHub or IServiceBroker.</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>analyzers visualstudio vssdk sdk</tags>
+  </metadata>
+</package>

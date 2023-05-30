@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AspNet.ScriptManager.bootstrap</id>
+    <version>5.2.3</version>
+    <title>AspNet.ScriptManager.bootstrap</title>
+    <authors>Pranav Rastogi</authors>
+    <owners>Pranav Rastogi</owners>
+    <licenseUrl>https://webpifeed.blob.core.windows.net/webpifeed/eula/net_library_eula_enu.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package contains the AspNet.ScriptManager.bootstrap assembly that will automatically  register bootstrap 5.2.3 with the ScriptManager as "bootstrap".</description>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="bootstrap" version="[5.2.0, 5.2.4)" />
+    </dependencies>
+  </metadata>
+</package>

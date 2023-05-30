@@ -1,0 +1,801 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.VisualStudio.Utilities.Internal</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest">
+            <summary>
+            HttpWeb request wrapper
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.Url">
+            <summary>
+            Gets target Url
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.Method">
+            <summary>
+            Gets or sets used method (GET, HEAD, POST, PUT, DELETE, TRACE, or OPTIONS)
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.Timeout">
+            <summary>
+            Gets or sets timeout for response
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.CachePolicy">
+            <summary>
+            Gets or sets cache policy
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.ContentType">
+            <summary>
+            Gets or sets content type. For example, "application/x-www-form-urlencoded"
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest" /> class.
+            </summary>
+            <param name="url">Url</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.AddHeaders(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Add HTTP headers.
+            </summary>
+            <param name="headers">Headers to add</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.AsyncHttpWebRequest.GetResponseAsync">
+            <summary>
+            Send request and get response back asynchronously.
+            </summary>
+            <returns>Response</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.CodeContract">
+            <summary>
+            CodeContract is used for validate input parameters
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.CodeContract.RequiresArgumentNotNull``1(``0,System.String)">
+            <summary>
+            Requires that argument is not null
+            </summary>
+            <typeparam name="T">type of argument</typeparam>
+            <param name="value">Value</param>
+            <param name="argumentName">string representation of the argument</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.CodeContract.RequiresArgumentNotEmptyOrWhitespace(System.String,System.String)">
+            <summary>
+            Requires that string is not empty or contains just whitespaces
+            </summary>
+            <param name="value">value</param>
+            <param name="argumentName">string representation of the argument</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.CodeContract.RequiresArgumentNotNullAndNotEmpty(System.String,System.String)">
+            <summary>
+            Requires that string is not null and not empty
+            </summary>
+            <param name="value">value</param>
+            <param name="argumentName">string representation of the argument</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.CodeContract.RequiresArgumentNotNullAndNotWhiteSpace(System.String,System.String)">
+            <summary>
+            Requires that argument not null and not whitespace
+            </summary>
+            <param name="value">value</param>
+            <param name="argumentName">string representation of the argument</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.CodeContract.RequiresArgumentNotEmpty(System.Guid,System.String)">
+            <summary>
+            Requires that Guid is not empty
+            </summary>
+            <param name="guid">Guid to validate</param>
+            <param name="argumentName">string representation of the argument</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.DictionaryExtensions">
+            <summary>
+            Several dictionary extension methods.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.DictionaryExtensions.GetOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            Gets a value by the given key.
+            </summary>
+            <typeparam name="TK">key type</typeparam>
+            <typeparam name="TV">value type</typeparam>
+            <param name="dictionary">dictionary</param>
+            <param name="key">key in the dictionary</param>
+            <returns>default if key doesn't exist in the dictionary.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.DictionaryExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1},System.Boolean)">
+            <summary>
+            Add one dictionary content to the another dictionary
+            </summary>
+            <typeparam name="TKey">type of the dictionary argument key</typeparam>
+            <typeparam name="TValue">type of the dictionary argument value</typeparam>
+            <param name="target">target dictionary</param>
+            <param name="source">source dictionary</param>
+            <param name="forceUpdate">whether we need to force update value</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.DictionaryExtensions.Remove``2(System.Collections.Concurrent.ConcurrentDictionary{``0,``1},``0)">
+            <summary>
+            Remove key from the ConcurrentDictionary
+            </summary>
+            <typeparam name="TK">type of the dictionary argument key</typeparam>
+            <typeparam name="TV">type of the dictionary argument value</typeparam>
+            <param name="dictionary">dictionary</param>
+            <param name="key">key</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest">
+            <summary>
+            HttpWeb request wrapper interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.Url">
+            <summary>
+            Gets target Url
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.Method">
+            <summary>
+            Gets or sets used method (GET, HEAD, POST, PUT, DELETE, TRACE, or OPTIONS)
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.Timeout">
+            <summary>
+            Gets or sets timeout for response
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.CachePolicy">
+            <summary>
+            Gets or sets cache policy
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.ContentType">
+            <summary>
+            Gets or sets content type. For example, "application/x-www-form-urlencoded"
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.AddHeaders(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Add HTTP headers.
+            </summary>
+            <param name="headers">Headers</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IAsyncHttpWebRequest.GetResponseAsync">
+            <summary>
+            Send request and get response back asynchronously.
+            </summary>
+            <returns>Response</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools">
+            <summary>
+            Helper class to get information from the Registry
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.GetRegistryIntValueFromLocalMachineRoot(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Get int registry value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.GetRegistryIntValueFromLocalMachineRoot(System.String,System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Get int registry value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>\
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.GetRegistryValueFromLocalMachineRoot(System.String,System.String,System.Object)">
+            <summary>
+            Get registry key value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.GetRegistryValueFromLocalMachineRoot(System.String,System.String,System.Boolean,System.Object)">
+            <summary>
+            Get registry key value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.GetRegistryValueFromCurrentUserRoot(System.String,System.String,System.Object)">
+            <summary>
+            Get registry key value from the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.SetRegistryFromCurrentUserRoot(System.String,System.String,System.Object)">
+            <summary>
+            Sets a value in the registry from the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="value">value to set</param>
+            <returns>true if set or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools.SetRegistryFromLocalMachineRoot(System.String,System.String,System.Object,System.Boolean)">
+            <summary>
+            Sets a value in the registry from the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="value">value to set</param>
+            <param name="use64Bit">optional, if set to true, it uses the 64 bit registry, otherwise defaults to 32 bit</param>
+            <returns>true if set or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.GetRegistryValueNamesFromCurrentUserRoot(System.String)">
+            <summary>
+            Get the names of all values under a key in the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.GetRegistryValueNamesFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Get the names of all values under a key in the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.GetRegistrySubKeyNamesFromCurrentUserRoot(System.String)">
+            <summary>
+            Get the names of all subkeys under a key in the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.GetRegistrySubKeyNamesFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Get the names of all subkeys under a key in the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DoesRegistryKeyExistInCurrentUserRoot(System.String)">
+            <summary>
+            Determines if a key exists in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>True if key exists, false if it does not</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DoesRegistryKeyExistInLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Determines if a key exists in the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if key exists, false if it does not</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DeleteRegistryKeyFromCurrentUserRoot(System.String)">
+            <summary>
+            Deletes the specified registry key and all subkeys in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DeleteRegistryKeyFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Deletes the specified registry key and all subkeys in the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DeleteRegistryValueFromCurrentUserRoot(System.String,System.String)">
+            <summary>
+            Deletes the specified registry value from a key in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools2.DeleteRegistryValueFromLocalMachineRoot(System.String,System.String,System.Boolean)">
+            <summary>
+            Deletes the specified registry value from a key in the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools3.TryGetRegistryValueKindFromCurrentUserRoot(System.String,System.String,Microsoft.Win32.RegistryValueKind@)">
+            <summary>
+            Determines the kind of a property in the HKCU root registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="kind">current value kind</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IRegistryTools3.TryGetRegistryValueKindFromLocalMachineRoot(System.String,System.String,Microsoft.Win32.RegistryValueKind@,System.Boolean)">
+            <summary>
+            Determines the kind of a property in the HKLM root registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="kind">current value kind</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.ErrorCode">
+            <summary>
+            Possible error codes for response.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.ErrorCode.NoError">
+            <summary>
+            No error occurs
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.ErrorCode.NullResponse">
+            <summary>
+            Null response was returned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.ErrorCode.RequestTimedOut">
+            <summary>
+            Request was cancelled by timeout.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.ErrorCode.WebExceptionThrown">
+            <summary>
+            Other web exception was thrown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.IStreamedHttpWebResponse">
+            <summary>
+            HttpWeb response wrapper interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IStreamedHttpWebResponse.ErrorCode">
+            <summary>
+            Gets response error code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IStreamedHttpWebResponse.ExceptionCode">
+            <summary>
+            Gets response exception code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.IStreamedHttpWebResponse.StatusCode">
+            <summary>
+            Gets response status code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.IStreamedHttpWebResponse.GetResponseStream">
+            <summary>
+            Get response as a stream.
+            </summary>
+            <returns>Response stream</returns>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.FileBasedRegistry.Exists">
+            <summary>
+            Gets a value indicating whether the registry contains values at the given path
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.FileBasedRegistry.ConvertWinRegistryPathToMacosPath(System.String)">
+            <summary>
+            Converts a windows registry path to a macos file path
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.FileBasedRegistryTools">
+            <summary>
+            File based implementation of IRegistryTools that uses the FileBasedRegistry for Unix/MacOS.
+            Machine level registry is not supported.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.MacNativeMethods">
+            <summary>
+            Class containing all PInvoke definitions we use in the Telemetry Library that are used on macOS.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.RegistryValue">
+            <summary>
+            Contains a registry value that is serializable for the Mono compatible FileBasedRegistry
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.Name">
+            <summary>
+            Gets or sets the name of the value
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.Type">
+            <summary>
+            Gets or sets the type of the value
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.Text">
+            <summary>
+            Gets or sets the text of the value
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.Strings">
+            <summary>
+            Gets or sets the collection of child strings for string[] values
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.Value">
+            <summary>
+            Gets the object value of the value that was deserialized
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryValue.FromValue(System.String,System.Object)">
+            <summary>
+            Creates a RegistryValue instance from the given value with the given name
+            </summary>
+            <param name="name">The name of the RegistryValue</param>
+            <param name="value">The value assigned to the RegistryValue</param>
+            <returns>Returns a new RegistryValue instance</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.RegistryValues">
+            <summary>
+            Contains registry values that are serializable for the Mono compatible FileBasedRegistry
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.ObjectExtensions">
+            <summary>
+            Object extensions methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.ObjectExtensions.Enumerate``1(``0)">
+            <summary>
+            Returns an enumeration that contains only the given value.
+            </summary>
+            <typeparam name="T">type of value</typeparam>
+            <param name="value">value itself</param>
+            <returns>INumerable type with only 1 value</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.ObjectExtensions.EmptyIfNull``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Return this enumeration in case it is not null. In case it is null return empty enumeration.
+            </summary>
+            <typeparam name="T">type of the values</typeparam>
+            <param name="enumeration">enumeration</param>
+            <returns>result</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.Platform">
+            <summary>
+            Determines which platform the process is running on.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.Platform.IsWindows">
+            <summary>
+            Returns true on Windows platform.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.Platform.IsMac">
+            <summary>
+            Returns true on Mac OS platforms.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Utilities.Internal.Platform.IsLinux">
+            <summary>
+            Returns true on Linux platforms.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.RegistryTools">
+            <summary>
+            Helper class to get information from the Registry
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryIntValueFromLocalMachineRoot(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Get int registry value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryIntValueFromLocalMachineRoot(System.String,System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Get int registry value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueFromLocalMachineRoot(System.String,System.String,System.Object)">
+            <summary>
+            Get registry key value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueFromLocalMachineRoot(System.String,System.String,System.Boolean,System.Object)">
+            <summary>
+            Get registry key value from the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueFromCurrentUserRoot(System.String,System.String,System.Object)">
+            <summary>
+            Get registry key value from the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.TryGetRegistryValueKindFromCurrentUserRoot(System.String,System.String,Microsoft.Win32.RegistryValueKind@)">
+            <summary>
+            Determines the kind of a property in the HKCU root registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="kind">current value kind</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.TryGetRegistryValueKindFromLocalMachineRoot(System.String,System.String,Microsoft.Win32.RegistryValueKind@,System.Boolean)">
+            <summary>
+            Determines the kind of a property in the HKLM root registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="kind">current value kind</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueNamesFromCurrentUserRoot(System.String)">
+            <summary>
+            Get the names of all values under a key in the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueNamesFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Get the names of all values under a key in the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistrySubKeyNamesFromCurrentUserRoot(System.String)">
+            <summary>
+            Get the names of all subkeys under a key in the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistrySubKeyNamesFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Get the names of all subkeys under a key in the HKLM root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>Array of value names or empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DoesRegistryKeyExistInCurrentUserRoot(System.String)">
+            <summary>
+            Determines if a key exists in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>True if key exists, false if it does not</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DoesRegistryKeyExistInLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Determines if a key exists in the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if key exists, false if it does not</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.SetRegistryFromCurrentUserRoot(System.String,System.String,System.Object)">
+            <summary>
+            Sets a value in the registry from the HKCU root Registry.
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="value">value to set</param>
+            <returns>true if set or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.SetRegistryFromLocalMachineRoot(System.String,System.String,System.Object,System.Boolean)">
+            <summary>
+            Sets a value in the registry from the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="value">value to set</param>
+            <param name="use64Bit">optional, if set to true, it uses the 64 bit registry, otherwise defaults to 32 bit</param>
+            <returns>true if set or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistryKeyFromCurrentUserRoot(System.String)">
+            <summary>
+            Deletes the specified registry key and all subkeys in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistryKeyFromLocalMachineRoot(System.String,System.Boolean)">
+            <summary>
+            Deletes the specified registry key and all subkey sin the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistryValueFromCurrentUserRoot(System.String,System.String)">
+            <summary>
+            Deletes the specified registry value from a key in the HKCU root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistryValueFromLocalMachineRoot(System.String,System.String,System.Boolean)">
+            <summary>
+            Deletes the specified registry value from a key in the HKLM root Registry
+            </summary>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="use64Bit">if true, it uses the 64 bit registry, otherwise 32 bit is used</param>
+            <returns>True if removed, or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValue(Microsoft.Win32.RegistryKey,System.String,System.String,System.Object)">
+            <summary>
+            Get registry key settings int value.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="defaultOnError">default value on error</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.TryGetRegistryValueKind(Microsoft.Win32.RegistryKey,System.String,System.String,Microsoft.Win32.RegistryValueKind@)">
+            <summary>
+            Get registry value kind.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="kind">current value kind</param>
+            <returns>True if no error, otherwise false</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistryValueNames(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            Get all values under a registry key. If none, an empty array is returned.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.GetRegistrySubKeyNames(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            Get all subkeys under a registry key. If none, an empty array is returned.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DoesRegistryKeyExist(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            Checks if registry key exists
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>current value or null in case</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.SetRegistryValue(Microsoft.Win32.RegistryKey,System.String,System.String,System.Object)">
+            <summary>
+            Set registry key settings value.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <param name="value">value to set</param>
+            <returns>true if set or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistrySubKey(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            Deletes registry subkey and removes all child subkeys.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <returns>true if deleted or false if error</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.RegistryTools.DeleteRegistryValue(Microsoft.Win32.RegistryKey,System.String,System.String)">
+            <summary>
+            Deletes registry value from the specified subkey.
+            </summary>
+            <param name="rootKey">Root key entry</param>
+            <param name="regKeyPath">Path to the registry key in the format key\subkey\subsubkey</param>
+            <param name="regKeyName">Variable name under the key</param>
+            <returns>true if deleted or false if error</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse">
+            <summary>
+            HttpWeb response wrapper with stream implementation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse.ErrorCode">
+            <summary>
+            Gets or sets response error code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse.ExceptionCode">
+            <summary>
+            Gets or sets response exception code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse.Response">
+            <summary>
+            Gets or sets response itself.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse.StatusCode">
+            <summary>
+            Gets or sets response status code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.StreamedHttpWebResponse.GetResponseStream">
+            <summary>
+            Get response as a stream.
+            </summary>
+            <returns>Response stream</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.StringExtensions">
+            <summary>
+            Extend several strings methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.StringExtensions.Join(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Join string together using "separator" string as separator
+            </summary>
+            <param name="values">string array</param>
+            <param name="separator">separator string </param>
+            <returns>new string</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.StringExtensions.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            Check whether string is null or contains whitespaces only
+            </summary>
+            <param name="value">string to validate</param>
+            <returns>result of operation</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Utilities.Internal.TaskExtensions">
+            <summary>
+            Task extensions
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Utilities.Internal.TaskExtensions.SwallowException(System.Threading.Tasks.Task)">
+             <summary>
+             Swallow exceptions for event handlers.
+             http://theburningmonk.com/2012/10/c-beware-of-async-void-in-your-code/
+            
+             We need to read an Exception to prevent throwing an Exception for
+             .NET 4.0 and below. See
+             http://stackoverflow.com/questions/25691114/where-does-an-async-task-throw-exception-if-it-is-not-awaited
+             </summary>
+             <param name="task">Task to swallow exception for</param>
+        </member>
+    </members>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>TDS5OXg4ROWFS7l5RXbs0bG1ZuiW38wQZ37phKioW1M=</DigestValue></Reference></SignedInfo><SignatureValue>IM46+jTr5R3FXSasiBY7o4jajU57be5AticEpCiT7MpBoREHuCkDufNcAxhJ5LGiXbDo9K4/8clBerkxhSHA14jjVc8VUOqdwyDeU12Enn7Bw/WMmYAHHBxdqY99cW7X2N1OrUpQBOP5GgJHAcdhmBmB3z3hUMMrob5v85lWUQj402iaBhgaBOE/dhTfZ25dYovJdWxlvkQH3slUPMXDW6vop07VV9NP+sc5P0n+Spdo2IL9NiZbaz/QV+Q5UfvAl47Z+yoBVyNah3qr8aRfVxcxq3cWZTktexosiLsz/62ZQ9ZIpsKXsZp1cYRXb0r0aAMnxHtK+2+cWJxk2MJCZA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>ok2x7OvGwA7zbnfezc3HT9M4dJka+FaQ7+vCqG40Bcm1QLlYIiDX/Whts0LVijaOvtl9iMeuShnAV7mchItKAVAABpyHuTuav2NCI9FsA8jFmlWndk3uK9RInNx1h1H4ojYxdBExyoN6muwwslKsLEfauUml7h5WAsDPpufTZd4yp2Jyiy384Zdd8CJlfQxfDe+gDZEciugWKHPSOoRxdjAk0GFm0OH14MyoYM4+M3mm1oH7vmSQohS5KIL3NEVW9Mdw7csTG5f93uORLvrJ/8ehFcGyWVb7UGHJnRhdcgGIbfiZzZlsAMS/DIBzM8RHKGNUNSbbLYmN/rt7pRjL4Q==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">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</CounterSignature></Object></Signature></doc>

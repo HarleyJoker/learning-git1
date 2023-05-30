@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>bootstrap.sass</id>
+    <version>5.2.3</version>
+    <title>Bootstrap Sass</title>
+    <authors>The Bootstrap Authors, Twitter Inc.</authors>
+    <owners>bootstrap</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>bootstrap.png</icon>
+    <projectUrl>https://getbootstrap.com/</projectUrl>
+    <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
+    <summary>Bootstrap framework in Sass. Includes JavaScript</summary>
+    <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
+    <copyright>Copyright 2017-2022</copyright>
+    <language>en-us</language>
+    <tags>css sass mobile-first responsive front-end framework web</tags>
+    <contentFiles>
+      <files include="**/*" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+</package>

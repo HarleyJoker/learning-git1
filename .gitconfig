@@ -1,0 +1,12 @@
+[user]
+	name = HarleyJoker
+	email = mbuyazinaledi@gmail.com
+[color]
+	ui = auto
+[safe]
+	directory = C:/Users/NMbuyazi
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

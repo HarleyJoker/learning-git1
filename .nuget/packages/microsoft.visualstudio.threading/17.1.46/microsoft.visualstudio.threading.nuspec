@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.Threading</id>
+    <version>17.1.46</version>
+    <authors>Microsoft</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <projectUrl>https://github.com/Microsoft/vs-threading</projectUrl>
+    <description>Async synchronization primitives, async collections, TPL and dataflow extensions. The JoinableTaskFactory allows synchronously blocking the UI thread for async work. This package is applicable to any .NET application (not just Visual Studio).</description>
+    <releaseNotes>https://github.com/microsoft/vs-threading/releases/tag/v17.1.46</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Threading Async Lock Synchronization Threadsafe</tags>
+    <repository type="git" url="https://github.com/microsoft/vs-threading" commit="df91669c5758d769e095c518179cdbfbe58bb1c4" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Microsoft.VisualStudio.Threading.Analyzers" version="17.1.46" include="All" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Validation" version="17.0.43" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Win32.Registry" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Microsoft.VisualStudio.Threading.Analyzers" version="17.1.46" include="All" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Validation" version="17.0.43" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Win32.Registry" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.VisualStudio.Threading.Analyzers" version="17.1.46" include="All" />
+        <dependency id="Microsoft.Bcl.AsyncInterfaces" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Validation" version="17.0.43" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Win32.Registry" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework=".NETFramework4.7.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

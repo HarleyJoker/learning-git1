@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VisualStudio.RpcContracts</id>
+    <version>17.5.21</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>PackageIcon.png</icon>
+    <projectUrl>https://aka.ms/vsextensibility</projectUrl>
+    <description>Visual Studio RPC contracts</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <repository type="git" url="https://devdiv.visualstudio.com/DevDiv/_git/VS.RPC.Contracts" commit="9d65d6a528b23bae1aff4115965d3adcd56b72d0" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Microsoft.ServiceHub.Framework" version="3.0.2061" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.20" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.ServiceHub.Framework" version="3.0.2061" exclude="Build,Analyzers" />
+        <dependency id="StreamJsonRpc" version="2.14.20" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
